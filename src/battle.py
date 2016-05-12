@@ -41,3 +41,25 @@ class Battle():
 
             print "Team '%s' turn!" % team.name
 
+            for x in team.units:
+                self.move_phase(team, x)
+                self.targeting_phase(team, x)
+
+    def move_phase(self, team, unit):
+        print "Move phase for '%s' from '%s' team!" % (unit.name, team.name)
+
+        if not unit.ai:
+            coords = raw_input("input coords:")
+            print "Unit %s move to (%s)" % (unit.name, coords)
+        else:
+            pass
+
+    def targeting_phase(self, team, unit):
+        print "Targeting phase for '%s' from '%s' team!" % (unit.name, team.name)
+
+        if not unit.ai:
+            team_name = raw_input("input target team:")
+            targ_name = raw_input("input target name:")
+            print "Unit %s locked %s from '%s' team" % (unit.name, targ_name, team_name)
+        else:
+            pass

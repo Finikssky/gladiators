@@ -28,4 +28,8 @@ me.battle_inventory.equip_weapon(knife, "left")
 battle = battle.Battle()
 battle.add_team("blue")
 battle.add_team("red")
+
+battle.add_team_unit("blue", me)
+battle.add_team_unit("red", en)
+
 battle.turn()
