@@ -19,7 +19,7 @@ en.set_primary_attr("luck", 1)
 flamberg = weapons.Weapon("flamberg", weapons.WeaponHandType.TwoHand, weapons.WeaponBaseType.Sword, 15, 7.0)
 knife = weapons.Weapon("knife", weapons.WeaponHandType.OneHand, weapons.WeaponBaseType.Dagger, 3, 0.8)
 
-en.take_weapon(flamberg, "right")
+en.battle_inventory.equip_weapon(flamberg, "right")
 
-me.take_weapon(knife, "right")
-me.take_weapon(knife, "left")
+me.battle_inventory.equip_weapon(knife, "right")
+me.battle_inventory.equip_weapon(knife, "left")

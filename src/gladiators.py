@@ -2,6 +2,40 @@ import jsonpickle
 
 import weapons
 
+class GladiatorBattleInventory(object):
+    def __init__(self):
+        self.head  = None
+        self.neck  = None
+        self.left_shoulder = None
+        self.right_shoulder = None
+        self.gloves = None
+        self.left_weapon = None
+        self.right_weapon = None
+        self.upper_chest = None
+        self.down_chest = None
+        self.hips = None
+        self.legs = None
+        self.feet = None
+
+    def equip_weapon(self, weapon, hand):
+
+        if weapon.htype == weapons.WeaponHandType.TwoHand:
+            self.right_weapon = weapon
+            self.left_weapon = None
+
+        else:
+            if hand == "right":
+                if weapon.htype == weapons.WeaponHandType.OneHand or weapon.htype == weapons.WeaponHandType.RightHand or weapon.htype == weapons.WeaponHandType.OneTwoHand:
+                    self.right_weapon = weapon
+                else:
+                    print "Can't take this weapon in right hand!"
+
+            if hand == "left":
+                if weapon.htype == weapons.WeaponHandType.OneHand or weapon.htype == weapons.WeaponHandType.LeftHand or weapon.htype == weapons.WeaponHandType.OneTwoHand:
+                    self.left_weapon = weapon
+                else:
+                    print "Can't take this weapon in left hand!"
+
 class Gladiator(object):
     def __init__(self, name):
 
@@ -21,8 +55,7 @@ class Gladiator(object):
         self.pa_points = 10
 
         # things
-        self.cur_lweapon = None
-        self.cur_rweapon = None
+        self.battle_inventory = GladiatorBattleInventory()
 
         # system
         self.ai = 0
@@ -62,22 +95,3 @@ class Gladiator(object):
         self.cur_stamina += val
         if self.cur_stamina > self.max_stamina:
             self.cur_stamina = self.max_stamina
-
-    def take_weapon(self, weapon, hand):
-
-        if weapon.htype == weapons.WeaponHandType.TwoHand:
-            self.cur_rweapon = weapon
-            self.cur_lweapon = None
-
-        else:
-            if hand == "right":   
-                if weapon.htype == weapons.WeaponHandType.OneHand or weapon.htype == weapons.WeaponHandType.RightHand or weapon.htype == weapons.WeaponHandType.OneTwoHand:
-                    self.cur_rweapon = weapon
-                else:
-                    print "Can't take this weapon in right hand!"
-
-            if hand == "left":
-                if weapon.htype == weapons.WeaponHandType.OneHand or weapon.htype == weapons.WeaponHandType.LeftHand or weapon.htype == weapons.WeaponHandType.OneTwoHand:
-                    self.cur_lweapon = weapon
-                else:
-                    print "Can't take this weapon in left hand!"
