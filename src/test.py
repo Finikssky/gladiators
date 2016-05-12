@@ -1,6 +1,7 @@
 import weapons
 import skills
 import gladiators
+import battle
 
 me = gladiators.Gladiator("Sneek")
 me.set_primary_attr("agility", 4)
@@ -23,3 +24,8 @@ en.battle_inventory.equip_weapon(flamberg, "right")
 
 me.battle_inventory.equip_weapon(knife, "right")
 me.battle_inventory.equip_weapon(knife, "left")
+
+battle = battle.Battle()
+battle.add_team("blue")
+battle.add_team("red")
+battle.turn()
